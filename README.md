@@ -13,4 +13,3 @@ A web3 wallet handler.
 1. Run `npm install`
 2. Run `npm run husky-prepare`
 3. Run `npm start`
-

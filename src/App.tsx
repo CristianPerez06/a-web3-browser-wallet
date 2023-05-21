@@ -1,23 +1,24 @@
-import React from 'react'
-import logo from './logo.svg'
-import './App.scss'
+import React, { useState } from "react";
+import "./App.scss";
 
-type Component = () => JSX.Element
+import Header from "./components/header/Header";
+import Main from "./components/main/Main";
+
+type Component = () => JSX.Element;
 
 const App: Component = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
-  )
-}
+  const [isConnected, setIsConnected] = useState(false);
 
-export default App
+  const handleClick = () => {
+    setIsConnected((prev) => !prev);
+  };
+
+  return (
+    <div className="app">
+      <Header handleButtonClick={handleClick} userIsConnected={isConnected} />
+      <Main userIsConnected={isConnected} />
+    </div>
+  );
+};
+
+export default App;

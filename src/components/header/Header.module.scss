@@ -1,0 +1,44 @@
+.header {
+  min-height: 8rem;
+  border-bottom: 0.3rem black solid;
+  background-color: var(--light-pink);
+
+  display: grid;
+  grid-template-areas:
+    "button"
+    "info";
+  grid-template-rows: auto auto;
+}
+
+.connected {
+  background-color: var(--pink);
+}
+
+.info-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: info;
+  padding: 1rem 0;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: button;
+  padding-top: 1rem;
+}
+
+@media screen and (min-width: 480px) {
+  .header {
+    grid-template-areas: "info button";
+    grid-template-rows: auto;
+    grid-template-columns: 9fr 3fr;
+  }
+
+  .button-container,
+  .info-container {
+    padding: 0;
+  }
+}
