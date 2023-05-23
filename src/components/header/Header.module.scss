@@ -5,8 +5,8 @@
 
   display: grid;
   grid-template-areas:
-    "button"
-    "info";
+    'button'
+    'info';
   grid-template-rows: auto auto;
 }
 
@@ -16,10 +16,27 @@
 
 .info-container {
   display: flex;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
-  grid-area: info;
   padding: 1rem 0;
+
+  @media screen and (min-width: 480px) {
+    flex-flow: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  span {
+    padding: 0 1rem;
+  }
+}
+
+.chain-name {
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .button-container {
@@ -32,7 +49,7 @@
 
 @media screen and (min-width: 480px) {
   .header {
-    grid-template-areas: "info button";
+    grid-template-areas: 'info button';
     grid-template-rows: auto;
     grid-template-columns: 9fr 3fr;
   }

@@ -1,43 +1,48 @@
-import { useState, useEffect } from "react";
-import cn from "classnames";
+import cn from 'classnames'
 
-import Button from "../shared/button/Button";
+import Button from '../shared/button/Button'
 
-import styles from "./Header.module.scss";
+import styles from './Header.module.scss'
 
 export interface HeaderProps {
-  userIsConnected?: boolean;
-  handleButtonClick: () => void;
+  userAddress?: string
+  chainName?: string
+  handleButtonClick: () => void
+  isDisabled?: boolean
 }
 
-type Comp = (props: HeaderProps) => JSX.Element;
+type Comp = (props: HeaderProps) => JSX.Element
 
 const Header: Comp = (props) => {
-  const { userIsConnected = false, handleButtonClick } = props;
+  const { userAddress, chainName, handleButtonClick, isDisabled = false } = props
 
-  const [isConnected, setIsConnected] = useState(false);
+  const truncateAddress = (input: string) => {
+    return input.substring(0, 5) + '...' + input.substring(38)
+  }
 
   const handleClick = () => {
-    handleButtonClick();
-  };
-
-  useEffect(() => {
-    setIsConnected(userIsConnected);
-  }, [userIsConnected]);
+    handleButtonClick()
+  }
 
   return (
-    <header
-      className={cn(styles["header"], isConnected && styles["connected"])}
-    >
-      <div className={styles["info-container"]}>Info here</div>
-      <div className={styles["button-container"]}>
+    <header className={cn(styles['header'], userAddress && styles['connected'])}>
+      {userAddress && (
+        <div className={styles['info-container']}>
+          <span className={styles['user-address']}>{truncateAddress(userAddress)}</span>
+          <div className={styles['chain-name']}>
+            <span>{chainName}</span>
+          </div>
+        </div>
+      )}
+      <div className={styles['button-container']}>
         <Button
-          content={isConnected ? "Connected" : "Connect"}
-          onClick={handleClick}
+          content={userAddress ? 'Connected' : 'Connect'}
+          onClick={!userAddress ? handleClick : undefined}
+          isDisabled={isDisabled}
         />
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
