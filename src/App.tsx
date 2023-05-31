@@ -39,7 +39,7 @@ const App: Component = () => {
         handleButtonClick={handleClick}
         userAddress={currentAccount}
         chainName={chainName}
-        isDisabled={!currentChainId}
+        isDisabled={!currentChainId || !!currentAccount}
       />
       <Main userIsConnected={!!currentAccount} />
       {error && <Error text={error} />}
