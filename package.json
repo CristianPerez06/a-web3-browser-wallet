@@ -1,5 +1,5 @@
 {
-  "name": "a-web3-wallet-handler",
+  "name": "a-web3-browser-wallet-handler",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
