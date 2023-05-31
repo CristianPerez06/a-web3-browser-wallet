@@ -1,24 +1,50 @@
-import React, { useState } from "react";
-import "./App.scss";
+import React from 'react'
 
-import Header from "./components/header/Header";
-import Main from "./components/main/Main";
+import Header from './components/header/Header'
+import Main from './components/main/Main'
+import Error from './components/error/Error'
 
-type Component = () => JSX.Element;
+import useEthereum from './hooks/useBrowserWallet'
+
+import { getChainByChainId } from './chain/Utilities'
+
+import './App.scss'
+
+type Component = () => JSX.Element
 
 const App: Component = () => {
-  const [isConnected, setIsConnected] = useState(false);
+  const [currentAccount, currentChainId, error, connectWallet] = useEthereum()
 
   const handleClick = () => {
-    setIsConnected((prev) => !prev);
-  };
+    connectWallet()
+  }
+
+  const getChainName = (chainId: number) => {
+    try {
+      const chain = getChainByChainId(chainId)
+      return chain.name
+    } catch (ex: any) {
+      return 'Unknown network'
+    }
+  }
+
+  let chainName = undefined
+  if (currentChainId) {
+    chainName = getChainName(currentChainId)
+  }
 
   return (
     <div className="app">
-      <Header handleButtonClick={handleClick} userIsConnected={isConnected} />
-      <Main userIsConnected={isConnected} />
+      <Header
+        handleButtonClick={handleClick}
+        userAddress={currentAccount}
+        chainName={chainName}
+        isDisabled={!currentChainId}
+      />
+      <Main userIsConnected={!!currentAccount} />
+      {error && <Error text={error} />}
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App

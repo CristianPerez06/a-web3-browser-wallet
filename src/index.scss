@@ -1,19 +1,16 @@
 @font-face {
-  font-family: "AunchantedXspace";
-  src: local("AunchantedXspace"),
-    url("./fonts/AunchantedXspace.ttf") format("truetype");
+  font-family: 'AunchantedXspace';
+  src: local('AunchantedXspace'), url('./fonts/AunchantedXspace.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "AunchantedXspaceBold";
-  src: local("AunchantedXspaceBold"),
-    url("./fonts/AunchantedXspaceBold.ttf") format("truetype");
+  font-family: 'AunchantedXspaceBold';
+  src: local('AunchantedXspaceBold'), url('./fonts/AunchantedXspaceBold.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "AunchantedXspaceThin";
-  src: local("AunchantedXspaceThin"),
-    url("./fonts/AunchantedXspaceThin.ttf") format("truetype");
+  font-family: 'AunchantedXspaceThin';
+  src: local('AunchantedXspaceThin'), url('./fonts/AunchantedXspaceThin.ttf') format('truetype');
 }
 
 :root {
