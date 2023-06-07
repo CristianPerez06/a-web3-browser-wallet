@@ -12,9 +12,11 @@ const useBrowserWallet = (): [
   currentAccount: string | undefined,
   currentChainId: number | undefined,
   error: string | undefined,
+  isLoading: boolean,
   connectWallet: () => Promise<any>
 ] => {
   const [error, setError] = useState<string | undefined>()
+  const [isLoading, setIsLoading] = useState(false)
   const [currentChainId, setCurrentChainId] = useState<number | undefined>()
   const [currentAccount, setCurrentAccount] = useState<string | undefined>()
 
@@ -74,6 +76,7 @@ const useBrowserWallet = (): [
 
   // Handle Connect wallet click
   const connectWallet = useCallback(async () => {
+    setIsLoading(true)
     setError(undefined)
 
     try {
@@ -82,6 +85,8 @@ const useBrowserWallet = (): [
       setCurrentAccount(accounts[0])
     } catch (error: any) {
       setError(MESSAGES.ERROR_WALLET_NOT_CONNECTED)
+    } finally {
+      setIsLoading(false)
     }
   }, [])
 
@@ -109,7 +114,7 @@ const useBrowserWallet = (): [
     }
   }, [currentAccount, currentChainId, checkWallet])
 
-  return [currentAccount, currentChainId, error, connectWallet]
+  return [currentAccount, currentChainId, error, isLoading, connectWallet]
 }
 
 export default useBrowserWallet

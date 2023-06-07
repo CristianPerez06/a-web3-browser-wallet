@@ -13,7 +13,7 @@ import './App.scss'
 type Component = () => JSX.Element
 
 const App: Component = () => {
-  const [currentAccount, currentChainId, error, connectWallet] = useEthereum()
+  const [currentAccount, currentChainId, error, isLoading, connectWallet] = useEthereum()
 
   const handleClick = () => {
     connectWallet()
@@ -39,7 +39,7 @@ const App: Component = () => {
         handleButtonClick={handleClick}
         userAddress={currentAccount}
         chainName={chainName}
-        isDisabled={!currentChainId || !!currentAccount}
+        isDisabled={isLoading || !currentChainId || !!currentAccount}
       />
       <Main userIsConnected={!!currentAccount} />
       {error && <Error text={error} />}

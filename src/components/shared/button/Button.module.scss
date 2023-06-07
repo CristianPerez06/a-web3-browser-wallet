@@ -9,7 +9,12 @@
   background-color: var(--light-blue);
   cursor: pointer;
 
+  &:hover {
+    background-color: var(--blue);
+  }
+
   &:disabled {
     cursor: default;
+    background-color: var(--light-blue);
   }
 }
