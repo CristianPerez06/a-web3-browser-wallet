@@ -1,28 +1,27 @@
-import cn from 'classnames'
+import cn from 'classnames';
+import { Button } from '@/components';
 
-import Button from '../shared/button/Button'
-
-import styles from './Header.module.scss'
+import styles from './Header.module.scss';
 
 export interface HeaderProps {
-  userAddress?: string
-  chainName?: string
-  handleButtonClick: () => void
-  isDisabled?: boolean
+  userAddress?: string;
+  chainName?: string;
+  handleButtonClick: () => void;
+  isDisabled?: boolean;
 }
 
-type Comp = (props: HeaderProps) => JSX.Element
+type Comp = (props: HeaderProps) => React.ReactNode;
 
 const Header: Comp = (props) => {
-  const { userAddress, chainName, handleButtonClick, isDisabled = false } = props
+  const { userAddress, chainName, handleButtonClick, isDisabled = false } = props;
 
   const truncateAddress = (input: string) => {
-    return input.substring(0, 5) + '...' + input.substring(38)
-  }
+    return input.substring(0, 5) + '...' + input.substring(38);
+  };
 
   const handleClick = () => {
-    handleButtonClick()
-  }
+    handleButtonClick();
+  };
 
   return (
     <header className={cn(styles['header'], userAddress && styles['connected'])}>
@@ -42,7 +41,7 @@ const Header: Comp = (props) => {
         />
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

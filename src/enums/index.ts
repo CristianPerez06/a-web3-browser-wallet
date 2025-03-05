@@ -1,6 +1,6 @@
-import { IChainData } from './IChainData'
+import { Chain } from '@/types';
 
-export const Chains: IChainData[] = [
+export const Chains: Chain[] = [
   {
     name: 'Ethereum Mainnet',
     chainId: 1,
@@ -815,4 +815,4 @@ export const Chains: IChainData[] = [
     },
     infoURL: 'https://poa.network',
   },
-]
+];

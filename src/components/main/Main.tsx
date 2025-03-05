@@ -1,16 +1,16 @@
-import astronautConnected from '../../img/astronaut-connected.svg'
-import astronautDisconnected from '../../img/astronaut-disconnected.svg'
+import astronautConnected from '@/img/astronaut-connected.svg';
+import astronautDisconnected from '@/img/astronaut-disconnected.svg';
 
-import styles from './Main.module.scss'
+import styles from './Main.module.scss';
 
 export interface HeaderProps {
-  userIsConnected?: boolean
+  userIsConnected?: boolean;
 }
 
-type Comp = (props: HeaderProps) => JSX.Element
+type Comp = (props: HeaderProps) => React.ReactNode;
 
 const Header: Comp = (props) => {
-  const { userIsConnected = false } = props
+  const { userIsConnected = false } = props;
 
   return (
     <main className={styles['main']}>
@@ -20,7 +20,7 @@ const Header: Comp = (props) => {
         alt="astronaut"
       />
     </main>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

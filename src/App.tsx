@@ -1,36 +1,31 @@
-import React from 'react'
+import { Header, Main, Error } from '@/components';
+import { useBrowserWallet } from '@/hooks';
+import { getChainByChainId } from '@/utils';
 
-import Header from './components/header/Header'
-import Main from './components/main/Main'
-import Error from './components/error/Error'
+import './App.scss';
 
-import useEthereum from './hooks/useBrowserWallet'
+type AppComponent = () => React.ReactNode;
 
-import { getChainByChainId } from './chain/Utilities'
-
-import './App.scss'
-
-type Component = () => JSX.Element
-
-const App: Component = () => {
-  const [currentAccount, currentChainId, error, isLoading, connectWallet] = useEthereum()
+const App: AppComponent = () => {
+  const { currentAccount, currentChainId, error, isLoading, connectWallet } = useBrowserWallet();
 
   const handleClick = () => {
-    connectWallet()
-  }
+    connectWallet();
+  };
 
   const getChainName = (chainId: number) => {
     try {
-      const chain = getChainByChainId(chainId)
-      return chain.name
-    } catch (ex: any) {
-      return 'Unknown network'
+      const chain = getChainByChainId(chainId);
+      return chain.name;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error: unknown) {
+      return 'Unknown network';
     }
-  }
+  };
 
-  let chainName = undefined
+  let chainName = undefined;
   if (currentChainId) {
-    chainName = getChainName(currentChainId)
+    chainName = getChainName(currentChainId);
   }
 
   return (
@@ -44,7 +39,7 @@ const App: Component = () => {
       <Main userIsConnected={!!currentAccount} />
       {error && <Error text={error} />}
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
