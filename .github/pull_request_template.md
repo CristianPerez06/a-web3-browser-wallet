@@ -1,6 +1,7 @@
 ## Requirements
 
 <!-- Change each checkbox to [x] to mark it as checked. -->
+
 - [ ] I have validated that the folder structure for new components follows the established guidelines:
   ```
   - my-cool-feature
