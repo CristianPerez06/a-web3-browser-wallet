@@ -1,6 +1,6 @@
 # a-web3-browser-wallet-handler
 
-A web3 wallet handler
+A Web3 Browser Wallet Handler - A React-based application that provides seamless integration with browser-based cryptocurrency wallets (like MetaMask). Features wallet connection, network detection, and real-time account/chain monitoring with a modern UI.
 
 ## Tech stack
 
@@ -11,17 +11,25 @@ A web3 wallet handler
 - classnames
 - Prettier, ESLint, and Husky
 
-## How to execute the app
+## Getting Started
 
-1. Run `npm install`
-2. Run `npm run husky-prepare`
-3. Run `npm run dev`
+### Development Server
 
-## Live example
+Next step is to install dependencies and run the development server:
 
-This example is deployed on [Render](https://render.com/) using a free account. Taking this into account there are a couple of things to keep in mind before using the app:
+```bash
+To run the application locally:
 
-- On first use, the App will have to boot, which could take several seconds.
-- Extensive use may affect performance.
+1. Install dependencies: `npm install`
+2. Prepare Husky hooks: `npm run husky-prepare`
+3. Start the development server: `npm start`
+```
 
-Go to [live example](https://a-web3-browser-wallet.onrender.com/)
+## Live Demo
+
+A live version of this app is hosted on [Render](https://render.com/) (free tier). Please note:
+
+- The app may take several seconds to start on first use, as the server may be sleeping.
+- Performance may be limited during periods of high usage.
+
+[View the live demo here](https://a-web3-browser-wallet.onrender.com/)
